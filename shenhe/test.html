@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+    var Date = new date();
+    var year = myDate.getFullYear(); 
+    var month = myDate.getMonth() + 1; 
+    var date = myDate.getDate(); 
+
+    if(month < 10 ){ 
+    month = "0" + month; 
+    } 
+    if(date < 10 ){ 
+    date = "0" + date; 
+    }
+
+    var mydate = year + "-" + month + "-" + date;
+</script>
+
+</head>
+<body>
+<script type="text/javascript">
+    var date=new Date();
+    var year=date.getFullYear();
+    var month=date.getMonth() +1;
+    var day=date.getDate();
+
+    if(month < 10 ){ 
+    month = "0" + month; 
+    } 
+    if(date < 10 ){ 
+    day = "0" + day; 
+    }
+
+    var mydate = year + "-" + month + "-" + day;
+    document.write(year+'-'+month+'-'+day);</script>
+</body>
+</html>
