@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test new function</title>
+<style>
+    body { background: #f1ece9 ; }
+
+    .process {
+        width: 296px;
+        margin: 50px auto 0;
+        position: relative;
+        line-height: 2em;
+        padding: 30px 0;
+    }
+
+    .process li {
+        margin-bottom:50px;
+        background:#e9e5e2;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#e1ddd9), to(#e9e5e2));
+        background-image: -webkit-linear-gradient(top, #e1ddd9, #e9e5e2);
+        background-image: linear-gradient(top, #e1ddd9, #e9e5e2);
+        height:20px;
+        border-radius:10px;
+        -webkit-box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
+        box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
+    }
+
+    .process li h3 {
+        position:relative;
+        top:-25px;
+    }
+
+
+
+    .bar {
+    height:18px;
+    margin:1px 2px;
+    position:absolute;
+    border-radius:10px;
+    -webkit-box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
+    box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
+    }
+
+    .bar1 {
+    width:100%;
+    -webkit-animation:bar1 2s ease-out;
+    background-color: #f674a4;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f674a4), to(#e06995));
+    background-image: -webkit-linear-gradient(top, #f674a4, #e06995);
+    background-image: linear-gradient(top, #f674a4, #e06995);
+    }
+
+    .bar2 {
+    width:90%;
+    -webkit-animation:bar2 2s ease-out;
+    background-color: #f0bb4b;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f0bb4b), to(#d9aa44));
+    background-image: -webkit-linear-gradient(top, #f0bb4b, #d9aa44);
+    background-image: linear-gradient(top, #f0bb4b, #d9aa44);
+    }
+
+    .bar3 {
+    width:65%;
+    -webkit-animation:bar3 2s ease-out;
+    background-color: #a1ce5b;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#a1ce5b), to(#91ba52));
+    background-image: -webkit-linear-gradient(top, #a1ce5b, #91ba52);
+    background-image: linear-gradient(top, #a1ce5b, #91ba52);
+    }
+
+    .bar4 {
+    width:80%;
+    -webkit-animation:bar4 2s ease-out;
+    background-color: #66b3cc;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#66b3cc), to(#5da3ba));
+    background-image: -webkit-linear-gradient(top, #66b3cc, #5da3ba);
+    background-image: linear-gradient(top, #66b3cc, #5da3ba)
+    }
+
+    @-webkit-keyframes bar1       { 0%  { width:0px;} 100%{ width:100%;}  }
+    @-webkit-keyframes bar2        { 0%  { width:0px;} 100%{ width:90%;}  }
+    @-webkit-keyframes bar3      { 0%  { width:0px;} 100%{ width:65%;}  }
+    @-webkit-keyframes bar4   { 0%  { width:0px;} 100%{ width:80%;}  }
+
+    </style>
+</head>
+<body>
+
+<ul class="process">
+                           <li><span class="bar bar1"></span><h3>HTML5, CSS3, JavaScript-ES6</h3></li>
+                                                                                                   <li><span class="bar bar2"></span><h3>Node, Webpack</h3></li>
+                                                                                                                                                             <li><span class="bar bar3"></span><h3>Sass, VUE, React, Antd</h3></li>
+                                                                                                                                                                                                                                <li><span class="bar bar4"></span><h3>移动端、小程序</h3></li>
+</ul>
+</body>
+</html>
