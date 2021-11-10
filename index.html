@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.3">-->
     <title>关于学习任务与项目的整理主页</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <style>
@@ -71,6 +71,7 @@
         align-items: center;
         -webkit-align-items: center;
         width:65%;
+        /*max-width: 800px;*/
         height: 350px;
         padding: 8px;
         margin: 8px;
@@ -91,6 +92,7 @@
         padding: 28px 16px;
         background: #009899;
         border-radius: 0 17px 17px 0;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
         transition:box-shadow 0.4s, background 0.4s ease-out;
         -webkit-transition:box-shadow 0.4s, background 0.4s ease-out;
         white-space:nowrap; /*不允许换行*/
@@ -215,41 +217,38 @@
         margin: 20px;
         width: 80%;
         height: 150px;
-        background-size: 100% 100%;
+        background: #f1ece9;
+        /*background-image: linear-gradient(to right bottom, #00cacc,#83ace2);*/
+        /*background-size: 100% 100%;*/
         /*background-position: 50%;*/
         border-radius: 17px;
         text-align: center;
         line-height:150px; /*使文字垂直居中*/
         /*border: 1px outset rgba(0, 0, 0, 0.1);*/
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
-        transition:box-shadow 0.4s, filter 0.4s;
-        -webkit-transition:box-shadow 0.4s, -webkit-filter 0.4s;
+        transition:box-shadow 0.5s, text-shadow 1.5s ease-out, color 0.5s, background-color 0.5s;
+        -webkit-transition:box-shadow 0.5s, text-shadow 1.5s ease-out, color 0.5s, background-color 0.5s;
         font-size: 26px;
         text-decoration: none;
-        -webkit-filter: grayscale(100%); /* 修改背景图灰度 */
-        filter: grayscale(100%);
+        /*-webkit-filter: grayscale(80%);
+        filter: grayscale(80%);*//* 修改背景图灰度 */
+        color: #009899;
     }
     .works:hover{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-filter: grayscale(0%); /* 修改背景图灰度 */
-        filter: grayscale(0%);
-    }
-    .works p{
-        color: #009899;
-        -webkit-transition: all 1.5s ease-out;
-        transition: all 1.5s ease;
-    }
-
-    .works p:hover{
-        color: #317082;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+        color: #f1ece9;
+        background-color: #009899;
         text-shadow: 0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 15px #fff,
-        0 0 20px #00cacc,
+        0 0 15px #009899,
+        0 0 20px #009899,
         0 0 35px #00cacc,
-        0 0 40px #00cacc;
+        0 0 40px #00cacc,
+        0 0 45px #00cacc,
+        0 0 50px #00cacc,
+        0 0 55px #00cacc;
     }
     .footer{
+        width: 100%;
         background-color: #999999;
         text-align:center;
         color: aliceblue;
@@ -257,10 +256,10 @@
     </style>
 </head>
 <body>
-<div class="top">
-    <h1>关于学习任务与项目的整理主页</h1>
-</div>
 <div class="flex_column">
+    <div class="top">
+        <h1>关于学习任务与项目的整理主页</h1>
+    </div>
     <div class="content">
         <span class="process_title"><img src="img/icon/task.png"><span>学习进度：</span></span>
         <ul class="process">
@@ -279,20 +278,20 @@
     <div class="notice1">
             <span>本站已被访问：<span id="times">NULL</span>次！</span>
     </div>
-    <a class="works" style="background-image: url('img/bbs.png')" href="bbs/index.php" target="_blank">
+    <a class="works" href="bbs/index.php" target="_blank">
         <p>由PHP构建的BBS论坛系统</p>
     </a>
-    <a class="works" style="background-image: url('')" href="bbs/index.php" target="_blank">
+    <a class="works" href="bbs/index.php" target="_blank">
         <p>布吉岛有什么用</p>
     </a>
-    <a class="works" style="background-image: url('')" href="bbs/index.php" target="_blank">
+    <a class="works" href="bbs/index.php" target="_blank">
         <p>可能只是用来占位置……</p>
     </a>
+    <div class="footer">
+        <p>来自 aiAdzari || 本页面代码为第5版</p>
+    </div>
 </div>
 
-<div class="footer">
-    <p>来自 aiAdzari || 本页面代码为第5版</p>
-</div>
 <script>
     var count = new XMLHttpRequest();
 
