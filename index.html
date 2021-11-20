@@ -1,319 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.3">-->
     <title>关于学习任务与项目的整理主页</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <style>
-
-    /*@font-face {
+        /*@font-face {
 
         font-family: "PingFang SC";
         src: url("");
     }*/
+        body {
+            font-family: "PingFang SC", "STXihei", monospace;
+            /*background: #f1ece9;*/
+        }
 
-    body{
-        font-family: "PingFang SC", "STXihei", monospace;
-        /*background: #f1ece9;*/
-    }
-    .container{
-        box-sizing: border-box;
-    }
+        .container {
+            box-sizing: border-box;
+        }
 
-    @keyframes top_color
-    {
-        0% {background: #80bfcc;}
-        30% {background: #235597;}
-        50% {background: #D35D78;}
-        80% {background: #235597;}
-        100% {background: #80bfcc;}
-    }
+        @keyframes top_color {
+            0% {
+                background: #80bfcc;
+            }
 
-    @-webkit-keyframes top_color
-    {
-        0% {background: #80bfcc;}
-        30% {background: #235597;}
-        50% {background: #D35D78;}
-        80% {background: #235597;}
-        100% {background: #80bfcc;}
-    }
-    .top{
-        display: -webkit-flex;
-        display: flex;
-        justify-content: center;
-        -webkit-justify-content: center;
-        align-items: center;
-        -webkit-align-items: center;
-        height: 150px;
-        width: 100%;
-        /*background-image: linear-gradient(to bottom right, #80bfcc, #235597);*/
-        /*background: #469cae;*/
-        animation: top_color 60s infinite;
-        -webkit-animation: top_color 60s infinite; /* Safari 与 Chrome */
-        text-align: center;
-        font-size: 40px;
-        color: #f1ece9;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-    .flex_column{
-        display: -webkit-flex;
-        display: flex;
-        justify-content: center;
-        -webkit-justify-content: center;
-        flex-wrap:wrap; /*支持换行*/
-        align-content: flex-start; /*内容以纵轴起点对齐*/
-        margin: 0 auto;
-        min-height: 1000px;
-        min-width: 1000px;
-        max-width: 1350px;
-    }
-    .content_outer{
-        width:65%;
-    }
-    .content{
-        display: -webkit-flex;
-        display: flex;
-        justify-content: center;
-        -webkit-justify-content: center;
-        align-items: center;
-        -webkit-align-items: center;
-        height: 350px;
-        padding: 4px;
-        margin: 8px;
-        background: #f1ece9;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        position:relative;
-    }
-    .nav{
-        padding: 0;
-        margin: 4px 8px 0 4px;
-        width:15%;
-        max-width: 250px;
-        /*background: #999999;*/
-        text-align: center;
-        list-style-type: none; /*列表样式前的点*/
-    }
-    .nav li{
-        margin: 8px 0;
-        padding: 28px 16px;
-        background: #009899;
-        border-radius: 0 17px 17px 0;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
-        transition:box-shadow 0.4s, background 0.4s ease-out;
-        -webkit-transition:box-shadow 0.4s, background 0.4s ease-out;
-        white-space:nowrap; /*不允许换行*/
+            30% {
+                background: #235597;
+            }
 
-    }
-    .nav li:hover{
-        background: #00cacc;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
-    }
-    .nav a{
-        text-decoration: none;
-        font-size: 17px;
-        color: white;
-        vertical-align:middle; /*使图标与文字垂直对齐,若只添加图片的中线对齐，则是用文字的base line对齐图片中线*/
-    }
-    .nav img{
-        width: 25px;
-        height: 25px;
-        vertical-align:middle; /*使图标与文字垂直对齐*/
-    }
-    .process {
-        width: 30%;
-        margin: 50px auto 0;
-        position: relative;
-        line-height: 2em;
-        padding: 30px 0;
-    }
+            50% {
+                background: #D35D78;
+            }
 
-    .process li {
-        margin-bottom:35px;
-        background:#e9e5e2;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#e1ddd9), to(#e9e5e2));
-        background-image: -webkit-linear-gradient(top, #e1ddd9, #e9e5e2);
-        background-image: linear-gradient(top, #e1ddd9, #e9e5e2);
-        height:20px;
-        border-radius:10px;
-        -webkit-box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
-        box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
-    }
+            80% {
+                background: #235597;
+            }
 
-    .process li h3 {
-        position:relative;
-        white-space:nowrap; /*不允许换行*/
-        top:-25px;
-        left: -50px;
-    }
-    .bar {
-        height:18px;
-        margin:1px 2px;
-        position:absolute;
-        border-radius:10px;
-        -webkit-box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
-        box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
-    }
+            100% {
+                background: #80bfcc;
+            }
+        }
 
-    .bar1 {
-        width:80%;
-        -webkit-animation:bar1 5s ease-out;
-        background-color: #C46479;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#C46479), to(#a63f56));
-        background-image: -webkit-linear-gradient(top, #C46479, #a63f56);
-        background-image: linear-gradient(top, #C46479, #a63f56);
-    }
+        @-webkit-keyframes top_color {
+            0% {
+                background: #80bfcc;
+            }
 
-    .bar2 {
-        width:60%;
-        -webkit-animation:bar2 5s ease-out;
-        background-color: #F1E068;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#F1E068), to(#d2ba13));
-        background-image: -webkit-linear-gradient(top, #F1E068, #d2ba13);
-        background-image: linear-gradient(top, #F1E068, #d2ba13);
-    }
+            30% {
+                background: #235597;
+            }
 
-    .bar3 {
-        width:30%;
-        -webkit-animation:bar3 5s ease-out;
-        background-color: #5bacbd;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#5bacbd), to(#3b8291));
-        background-image: -webkit-linear-gradient(top, #5bacbd, #3b8291);
-        background-image: linear-gradient(top, #5bacbd, #3b8291);
-    }
+            50% {
+                background: #D35D78;
+            }
 
-    .bar4 {
-        width:10%;
-        -webkit-animation:bar4 5s ease-out;
-        background-color: #2b69ba;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#2b69ba), to(#1d467c));
-        background-image: -webkit-linear-gradient(top, #2b69ba, #1d467c);
-        background-image: linear-gradient(top, #2b69ba, #1d467c)
-    }
+            80% {
+                background: #235597;
+            }
 
-    @-webkit-keyframes bar1       { 0%  { width:0px;} 100%{ width:80%;}  }
-    @-webkit-keyframes bar2        { 0%  { width:0px;} 100%{ width:60%;}  }
-    @-webkit-keyframes bar3      { 0%  { width:0px;} 100%{ width:30%;}  }
-    @-webkit-keyframes bar4   { 0%  { width:0px;} 100%{ width:10%;}  }
-    .process_title{
-        position: absolute;
-        top: 10%;
-        left: 15%;
-        font-size: 25px;
-    }
-    .process_title img{
-        vertical-align:middle; /*使图标与文字垂直对齐*/
-         width: 32px;
-         height: 32px;
-     }
-    .process_title span{
-        vertical-align:middle; /*使图标与文字垂直对齐*/
-    }
-    .notice1{
-        z-index: -1;
+            100% {
+                background: #80bfcc;
+            }
+        }
 
-    }
-    .notice1 span{
-        background: #317082;
-        margin: 16px;
-        padding: 8px;
-        border-radius: 0 0 8px 8px;
-        color: white;
+        .top {
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+            height: 150px;
+            width: 100%;
+            /*background-image: linear-gradient(to bottom right, #80bfcc, #235597);*/
+            /*background: #469cae;*/
+            animation: top_color 60s infinite;
+            -webkit-animation: top_color 60s infinite;
+            /* Safari 与 Chrome */
+            text-align: center;
+            font-size: 40px;
+            color: #f1ece9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
 
-    }
-    .works{
-        margin: 20px;
-        width: 80%;
-        height: 150px;
-        background: #f1ece9;
-        /*background-image: linear-gradient(to right bottom, #00cacc,#83ace2);*/
-        /*background-size: 100% 100%;*/
-        /*background-position: 50%;*/
-        border-radius: 17px;
-        text-align: center;
-        line-height:150px; /*使文字垂直居中*/
-        /*border: 1px outset rgba(0, 0, 0, 0.1);*/
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
-        transition:box-shadow 0.5s, text-shadow 1.5s ease-out, color 0.5s, background-color 0.5s;
-        -webkit-transition:box-shadow 0.5s, text-shadow 1.5s ease-out, color 0.5s, background-color 0.5s;
-        font-size: 26px;
-        text-decoration: none;
-        /*-webkit-filter: grayscale(80%);
-        filter: grayscale(80%);*//* 修改背景图灰度 */
-        color: #009899;
-    }
-    .works:hover{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
-        color: #f1ece9;
-        background-color: #009899;
-        text-shadow: 0 0 5px #fff,
-        0 0 15px #009899,
-        0 0 20px #009899,
-        0 0 35px #00cacc,
-        0 0 40px #00cacc,
-        0 0 45px #00cacc,
-        0 0 50px #00cacc,
-        0 0 55px #00cacc;
-    }
-    .footer{
-        width: 100%;
-        background-color: #999999;
-        text-align:center;
-        color: aliceblue;
-    }
+        .flex_column {
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            flex-wrap: wrap;
+            /*支持换行*/
+            align-content: flex-start;
+            /*内容以纵轴起点对齐*/
+            margin: 0 auto;
+            min-height: 1000px;
+            min-width: 1000px;
+            max-width: 1350px;
+        }
+
+        .content_outer {
+            width: 65%;
+        }
+
+        .content {
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+            height: 350px;
+            padding: 4px;
+            margin: 8px;
+            background: #f1ece9;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            position: relative;
+        }
+
+        .nav {
+            padding: 0;
+            margin: 4px 8px 0 4px;
+            width: 15%;
+            max-width: 250px;
+            /*background: #999999;*/
+            text-align: center;
+            list-style-type: none;
+            /*列表样式前的点*/
+        }
+
+        .nav li {
+            margin: 8px 0;
+            padding: 28px 16px;
+            background: #009899;
+            border-radius: 0 17px 17px 0;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
+            transition: box-shadow 0.4s, background 0.4s ease-out;
+            -webkit-transition: box-shadow 0.4s, background 0.4s ease-out;
+            white-space: nowrap;
+            /*不允许换行*/
+
+        }
+
+        .nav li:hover {
+            background: #00cacc;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+        }
+
+        .nav a {
+            text-decoration: none;
+            font-size: 17px;
+            color: white;
+            vertical-align: middle;
+            /*使图标与文字垂直对齐,若只添加图片的中线对齐，则是用文字的base line对齐图片中线*/
+        }
+
+        .nav img {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+            /*使图标与文字垂直对齐*/
+        }
+
+        .process {
+            width: 30%;
+            margin: 50px auto 0;
+            position: relative;
+            line-height: 2em;
+            padding: 30px 0;
+        }
+
+        .process li {
+            margin-bottom: 35px;
+            background: #e9e5e2;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#e1ddd9), to(#e9e5e2));
+            background-image: -webkit-linear-gradient(top, #e1ddd9, #e9e5e2);
+            background-image: linear-gradient(top, #e1ddd9, #e9e5e2);
+            height: 20px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
+            box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
+        }
+
+        .process li h3 {
+            position: relative;
+            white-space: nowrap;
+            /*不允许换行*/
+            top: -25px;
+            left: -50px;
+        }
+
+        .bar {
+            height: 18px;
+            margin: 1px 2px;
+            position: absolute;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
+            box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
+        }
+
+        .bar1 {
+            width: 80%;
+            -webkit-animation: bar1 5s ease-out;
+            background-color: #C46479;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#C46479), to(#a63f56));
+            background-image: -webkit-linear-gradient(top, #C46479, #a63f56);
+            background-image: linear-gradient(top, #C46479, #a63f56);
+        }
+
+        .bar2 {
+            width: 60%;
+            -webkit-animation: bar2 5s ease-out;
+            background-color: #F1E068;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#F1E068), to(#d2ba13));
+            background-image: -webkit-linear-gradient(top, #F1E068, #d2ba13);
+            background-image: linear-gradient(top, #F1E068, #d2ba13);
+        }
+
+        .bar3 {
+            width: 30%;
+            -webkit-animation: bar3 5s ease-out;
+            background-color: #5bacbd;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#5bacbd), to(#3b8291));
+            background-image: -webkit-linear-gradient(top, #5bacbd, #3b8291);
+            background-image: linear-gradient(top, #5bacbd, #3b8291);
+        }
+
+        .bar4 {
+            width: 10%;
+            -webkit-animation: bar4 5s ease-out;
+            background-color: #2b69ba;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#2b69ba), to(#1d467c));
+            background-image: -webkit-linear-gradient(top, #2b69ba, #1d467c);
+            background-image: linear-gradient(top, #2b69ba, #1d467c)
+        }
+
+        @-webkit-keyframes bar1 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: 80%;
+            }
+        }
+
+        @-webkit-keyframes bar2 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: 60%;
+            }
+        }
+
+        @-webkit-keyframes bar3 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: 30%;
+            }
+        }
+
+        @-webkit-keyframes bar4 {
+            0% {
+                width: 0px;
+            }
+
+            100% {
+                width: 10%;
+            }
+        }
+
+        .process_title {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            font-size: 25px;
+        }
+
+        .process_title img {
+            vertical-align: middle;
+            /*使图标与文字垂直对齐*/
+            width: 32px;
+            height: 32px;
+        }
+
+        .process_title span {
+            vertical-align: middle;
+            /*使图标与文字垂直对齐*/
+        }
+
+        .notice1 {
+            z-index: -1;
+
+        }
+
+        .notice1 span {
+            background: #317082;
+            margin: 16px;
+            padding: 8px;
+            border-radius: 0 0 8px 8px;
+            color: white;
+
+        }
+
+        .works {
+            margin: 20px;
+            width: 80%;
+            height: 150px;
+            background: #f1ece9;
+            /*background-image: linear-gradient(to right bottom, #00cacc,#83ace2);*/
+            /*background-size: 100% 100%;*/
+            /*background-position: 50%;*/
+            border-radius: 17px;
+            text-align: center;
+            line-height: 150px;
+            /*使文字垂直居中*/
+            /*border: 1px outset rgba(0, 0, 0, 0.1);*/
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
+            transition: box-shadow 0.5s, text-shadow 1.5s ease-out, color 0.5s, background-color 0.5s;
+            -webkit-transition: box-shadow 0.5s, text-shadow 1.5s ease-out, color 0.5s, background-color 0.5s;
+            font-size: 26px;
+            text-decoration: none;
+            /*-webkit-filter: grayscale(80%);
+        filter: grayscale(80%);*/
+            /* 修改背景图灰度 */
+            color: #009899;
+        }
+
+        .works:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+            color: #f1ece9;
+            background-color: #009899;
+            text-shadow: 0 0 5px #fff,
+                0 0 15px #009899,
+                0 0 20px #009899,
+                0 0 35px #00cacc,
+                0 0 40px #00cacc,
+                0 0 45px #00cacc,
+                0 0 50px #00cacc,
+                0 0 55px #00cacc;
+        }
+
+        .footer {
+            width: 100%;
+            background-color: #999999;
+            text-align: center;
+            color: aliceblue;
+        }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <div class="top">
-        <h1>关于学习任务与项目的整理主页</h1>
-    </div>
-    <div class="flex_column">
-        <div class="content_outer">
-            <div class="content">
-                <span class="process_title"><img src="img/icon/task.png"><span>学习进度：</span></span>
-                <ul class="process">
-                    <li><span class="bar bar1"></span><h3>HTML5, CSS3, JavaScript-ES6</h3></li>
-                    <li><span class="bar bar2"></span><h3>AJAX, Node, Webpack</h3></li>
-                    <li><span class="bar bar3"></span><h3>Sass, VUE, React, Antd</h3></li>
-                    <li><span class="bar bar4"></span><h3>移动端、小程序</h3></li>
-                </ul>
-            </div>
-            <div class="notice1">
-            <span>本站已被访问：<span id="times">NULL</span>次！</span>
-            </div>
+    <div class="container">
+        <div class="top">
+            <h1>关于学习任务与项目的整理主页</h1>
         </div>
+        <div class="flex_column">
+            <div class="content_outer">
+                <div class="content">
+                    <span class="process_title"><img src="img/icon/task.png"><span>学习进度：</span></span>
+                    <ul class="process">
+                        <li><span class="bar bar1"></span>
+                            <h3>HTML5, CSS3, JavaScript-ES6</h3>
+                        </li>
+                        <li><span class="bar bar2"></span>
+                            <h3>AJAX, Node, Webpack</h3>
+                        </li>
+                        <li><span class="bar bar3"></span>
+                            <h3>Sass, VUE, React, Antd</h3>
+                        </li>
+                        <li><span class="bar bar4"></span>
+                            <h3>移动端、小程序</h3>
+                        </li>
+                    </ul>
+                </div>
+                <div class="notice1">
+                    <span>本站已被访问：<span id="times">NULL</span>次！</span>
+                </div>
+            </div>
 
-        <ul class="nav">
-            <li><img src="img/icon/home.png"><a href="https://gojohnny.top" target="_blank">Blog</a></li>
-            <li><img src="img/icon/data.png"><a href="bbs/index.php" target="_blank">前端项目集</a></li>
-            <li><img src="img/icon/electronics.png"><a href="404.html" target="_blank">嵌入式服务器</a></li>
-            <li><img src="img/icon/earth.png"><a href="hello,%20world.php" target="_blank">Hello, World!</a></li>
-        </ul>
+            <ul class="nav">
+                <li><img src="img/icon/home.png"><a href="https://gojohnny.top" target="_blank">Blog</a></li>
+                <li><img src="img/icon/data.png"><a href="bbs/index.php" target="_blank">前端项目集</a></li>
+                <li><img src="img/icon/electronics.png"><a href="404.html" target="_blank">嵌入式服务器</a></li>
+                <li><img src="img/icon/earth.png"><a href="hello,%20world.php" target="_blank">Hello, World!</a></li>
+            </ul>
 
-        <a class="works" href="bbs/index.php" target="_blank">
-            <p>由PHP构建的BBS论坛系统</p>
-        </a>
-        <a class="works" href="bbs/index.php" target="_blank">
-            <p>布吉岛有什么用</p>
-        </a>
-        <a class="works" href="bbs/index.php" target="_blank">
-            <p>可能只是用来占位置……</p>
-        </a>
+            <a class="works" href="bbs/index.php" target="_blank">
+                <p>由PHP构建的BBS论坛系统</p>
+            </a>
+            <a class="works" href="bbs/index.php" target="_blank">
+                <p>布吉岛有什么用</p>
+            </a>
+            <a class="works" href="bbs/index.php" target="_blank">
+                <p>可能只是用来占位置……</p>
+            </a>
+        </div>
+        <div class="footer">
+            <p>来自 aiAdzari || 本页面代码为第5版</p>
+        </div>
     </div>
-    <div class="footer">
-        <p>来自 aiAdzari || 本页面代码为第5版</p>
-    </div>
-</div>
 
 
-<script>
-    var count = new XMLHttpRequest();
+    <script>
+        var count = new XMLHttpRequest();
 
-    count.open("get","count.php",false);
-    count.send();
+        count.open("get", "count.php", false);
+        count.send();
 
-    document.getElementById("times").innerHTML=count.responseText;
-</script>
+        document.getElementById("times").innerHTML = count.responseText;
+    </script>
 </body>
+
 </html>

@@ -42,111 +42,118 @@ $sum=mysqli_num_rows($que);
 ?>
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>板块</title>
-<style>
-        .cen{
+    <meta charset="utf-8">
+    <title>板块</title>
+    <style>
+        .cen {
             border: none;
             width: 50%;
             margin: 0 auto;
             height: 40px;
             background-color: rgba(34, 35, 62, 0.08);
         }
-        .left{
+
+        .left {
             width: auto;
             float: left;
         }
-        .right{
+
+        .right {
             width: 87px;
             height: 30px;
-            background-color:#CF772B;
+            background-color: #CF772B;
             float: right;
             margin-top: 8px;
         }
-        .title{
+
+        .title {
             background-color: #8FBC8F;
             color: white;
         }
-        .list{
+
+        .list {
             margin-left: 12px;
         }
     </style>
 </head>
 
 <body>
-<div class="cen">
-<div class="left">
-  <?php
+    <div class="cen">
+        <div class="left">
+            <?php
  $sql1="select forum_name from forums where id='$F'";
  $squ1=mysqli_query($conn,$sql1);
  $row=mysqli_fetch_array($squ1);
  $forum_name=$row['forum_name'];
  echo "<a href=\"index.php\">BBS主页</a>-->>$forum_name";
  ?>
-</div>
-<div class="right"><a style="color: white" href="addnew.php">
-	<?php
+        </div>
+        <div class="right"><a style="color: white" href="addnew.php">
+                <?php
 			if(check_login() > 0)
 			{
 				echo "发布新贴";
 			}?>
-			</a>
-			<a style="color: white" href="login.php">
-			<?php
+            </a>
+            <a style="color: white" href="login.php">
+                <?php
 			if(check_login() == false)
 			{
 				echo "[登录/注册]";
 			}
 			?>
-	</a> </div>
-</div>
-<table width="50%" border="1" cellpadding="8" cellspacing="0" align="center">
-    <tr class="title">
-        <td colspan="3">帖子列表 <span class="list">[<a style="color: white" href="index.php">返回</a> ]</span>
-		<span style="float: right"><a style="color: white" href="userhome.php">
-			<?php
+            </a> </div>
+    </div>
+    <table width="50%" border="1" cellpadding="8" cellspacing="0" align="center">
+        <tr class="title">
+            <td colspan="3">帖子列表 <span class="list">[<a style="color: white" href="index.php">返回</a> ]</span>
+                <span style="float: right"><a style="color: white" href="userhome.php">
+                        <?php
 			if(check_login() > 0)
 			{
 				echo "欢迎！" . $_SESSION['username'];
 			}?>
-			</a></span>
-		</td>
-    </tr>
-    <tr>
-        <td width="50%">主题列表</td>
-        <td width="30%" >作者</td>
-        <td width="20%">最后更新</td>
-    </tr>
-    <?php
+                    </a></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="50%">主题列表</td>
+            <td width="30%">作者</td>
+            <td width="20%">最后更新</td>
+        </tr>
+        <?php
     if($sum>0) {
  while($row=mysqli_fetch_array($que)) {
  ?>
- <tr height="83px">
-        <td width="50%"><div><a href="thread.php?id=<?php echo $row['id']?>"</a><?php echo $row['title']?></div> </td>
-        <td width="30%"><?php echo $row['author'] ?></td>
-        <td width="20%"><?php echo $row['last_post_time']?></td>
-    </tr>
-            <tr>
-                <td colspan="3">
-                    <?php }
+        <tr height="83px">
+            <td width="50%">
+                <div><a href="thread.php?id=<?php echo $row['id']?>" </a><?php echo $row['title']?> </div> </td> <td
+                        width="30%"><?php echo $row['author'] ?>
+            </td>
+            <td width="20%"><?php echo $row['last_post_time']?></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <?php }
                    }
  else{
  echo "<tr><td colspan='5'>本版块没有帖子.....</td></tr>";
                     } ?>
- </td>
-            </tr>
-    <tr>
-        <td colspan="5">
-            <div id="baner" style="margin-top: 20px">
-                <a href="<?php
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <div id="baner" style="margin-top: 20px">
+                    <a href="<?php
                 echo "$_SERVER[PHP_SELF]?page=1"
  ?>">首页</a>
-                &nbsp;&nbsp;<a href="<?php
+                    &nbsp;&nbsp;<a href="<?php
                 echo "$_SERVER[PHP_SELF]?page=".($page-1)
  ?>">上一页</a>
-                <!--显示123456等页码按钮-->
- <?php
+                    <!--显示123456等页码按钮-->
+                    <?php
 	if ($total_page <= 10)//总页小于10页时
 	{
 		for($i=1;$i<=$total_page;$i++)
@@ -187,18 +194,19 @@ $sum=mysqli_num_rows($que);
 		}
 	}
  ?>
- &nbsp;&nbsp;<a href="<?php
+                    &nbsp;&nbsp;<a href="<?php
                 echo "$_SERVER[PHP_SELF]?page=".($page+1)
  ?>">下一页</a>
-                &nbsp;&nbsp;<a href="<?php
+                    &nbsp;&nbsp;<a href="<?php
                 echo "$_SERVER[PHP_SELF]?page={$total_page}"
  ?>">末页</a>
-                &nbsp;&nbsp;<span>共<?php echo $total?>条</span>
-            </div>
-        </td>
-    </tr>
-</table>
+                    &nbsp;&nbsp;<span>共<?php echo $total?>条</span>
+                </div>
+            </td>
+        </tr>
+    </table>
 </body>
+
 </html>
 <?php
 function check_login()
