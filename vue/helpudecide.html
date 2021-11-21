@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>help u decide hahaha</title>
+
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <style>
+        .contanier{
+            box-sizing: border-box;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+        }
+        .content{
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            flex-wrap: wrap;
+            width: 50%;
+            min-width: 300px;
+            background-color: antiquewhite;
+        }
+        .title{
+            width: 100%;
+            max-height: 100px;
+            text-align: center;
+        }
+        .title p{
+            font-size: 20px;
+            margin: 15px 0;
+        }
+        .pic{
+            min-width: 80%;
+            max-width: 500px;
+        }
+        .pic img{
+            position: relative;
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
+            min-height: 100px;
+        }
+        .pic img::after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color:azure;
+        }
+        .inqus{
+            text-align: center;
+        }
+        .ans{
+            font-size: 45px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contanier">
+        <div class="content">
+            <div class="title">
+                <p>YES / NO <br> 问题大解决！</p>
+            </div>
+            <div class="inqus" id="qus">
+                <div class="">
+                    <p>{{inqus}}的答案是：</p>
+                </div>
+                <div v-bind:class="{'ans':use}">
+                    <p>{{ans}}</p>
+                </div>
+                <div class="pic">
+                    <img :src="pic" alt="GIF" loop=infinite>
+                </div>
+                <div>
+                    <p>请输入问题：</p>
+                    <input v-model="inqus">
+                    <button @click="send">决定！</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <script>
+        var vm = new Vue({
+            el:"#qus",
+            data:{
+                inqus:"问题",
+                ans:"等待决定中……",
+                pic:"",
+                use: false,
+            },
+            methods: {
+                send: function(){
+                    this.ans = "思考中……"
+                    var vm = this
+                    $.get("https://yesno.wtf/api",function(data){
+                    vm.ans = data.answer;
+                    vm.pic = data.image;
+                    vm.use = true;
+                     });
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
