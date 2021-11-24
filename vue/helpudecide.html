@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>help u decide hahaha</title>
 
@@ -14,7 +14,8 @@
             font-family: "PingFang SC", "STXihei", monospace;
             /*background: #f1ece9;*/
         }
-        .content{
+
+        .content {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -30,10 +31,11 @@
             height: 550px;
             border-radius: 45px;
             background: linear-gradient(145deg, #cacaca, #f0f0f0);
-            box-shadow:  35px 35px 70px #bebebe,
-             -35px -35px 70px #ffffff;
+            box-shadow: 35px 35px 70px #bebebe,
+                -35px -35px 70px #ffffff;
         }
-        .title{
+
+        .title {
             width: 100%;
             max-height: 100px;
             text-align: center;
@@ -41,52 +43,89 @@
             position: absolute;
             top: -100px;
         }
-        .title p{
+
+        .title p {
             font-size: 35px;
             margin: 15px 0;
         }
-        .pic{
+
+        .pic {
             max-width: 80%;
             margin: 10px auto;
         }
-        .pic img{
+
+        .pic img {
             text-align: center;
             margin: 0 auto;
             width: 100%;
             min-height: 100px;
         }
-        .inqus{
+
+        .inqus {
             text-align: center;
         }
-        .inqus_title{
+
+        .inqus_title {
             font-size: 25px;
         }
-        .ans{
+
+        .ans {
             font-size: 45px;
         }
+
         .btn {
- border: none;
- color: #090909;
- padding: 0.7em 1.7em;
- font-size: 18px;
- border-radius: 0.5em;
- background: #e8e8e8;
- border: 1px solid #e8e8e8;
- transition: all .3s;
- box-shadow: 6px 6px 12px #c5c5c5,
-             -6px -6px 12px #ffffff;
-}
+            border: none;
+            color: #090909;
+            padding: 0.7em 1.7em;
+            font-size: 18px;
+            border-radius: 0.5em;
+            background: #e8e8e8;
+            border: 1px solid #e8e8e8;
+            transition: all .3s;
+            box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+        }
 
-button:hover {
- border: 1px solid white;
-}
+        button:hover {
+            border: 1px solid white;
+        }
 
-button:active {
- box-shadow: 4px 4px 12px #c5c5c5,
-             -4px -4px 12px #ffffff;
-}
+        button:active {
+            box-shadow: 4px 4px 12px #c5c5c5,
+                -4px -4px 12px #ffffff;
+        }
+
+        @media screen and (max-width: 800px) {
+            .content {
+                width: 400px;
+                height: 400px;
+            }
+            .pic {
+            max-width: 50%;
+            margin: 10px auto;
+            }
+        }
+        @media screen and (max-width: 400px) {
+            .content {
+                width: 300px;
+                height: 400px;
+            }
+            .pic {
+            max-width: 50%;
+            margin: 10px auto;
+            }
+            .title p {
+            font-size: 25px;
+            margin: 10px 0;
+            }
+            .title{
+                top: -75px;
+            }
+        
+        }
     </style>
 </head>
+
 <body>
     <div class="contanier">
         <div class="content">
@@ -105,36 +144,38 @@ button:active {
                 </div>
                 <div>
                     <h2>请输入问题：</h2>
-                    <input v-model="inqus" style="width: 300px; height: 25px; margin: 10px auto;" placeholder="E.g. 他妈妈喜欢我吗？">
+                    <input v-model="inqus" style="width: 280px; height: 25px; margin: 10px auto;"
+                        placeholder="E.g. 他妈妈喜欢我吗？">
                     <button @click="send" class="btn">决定！</button>
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 
     <script>
         var vm = new Vue({
-            el:"#qus",
-            data:{
-                inqus:"",
-                ans:"……",
-                pic:"img/wenhao.svg",
+            el: "#qus",
+            data: {
+                inqus: "",
+                ans: "……",
+                pic: "img/wenhao.svg",
                 use: false,
             },
             methods: {
-                send: function(){
+                send: function () {
                     this.ans = "思考中……"
                     var vm = this
-                    $.get("https://yesno.wtf/api",function(data){
-                    vm.ans = data.answer;
-                    vm.pic = data.image;
-                    vm.use = true;
-                     })
+                    $.get("https://yesno.wtf/api", function (data) {
+                        vm.ans = data.answer;
+                        vm.pic = data.image;
+                        vm.use = true;
+                    })
                     this.inqus = '';
                 }
             }
-            
+
         })
     </script>
 </body>
+
 </html>
