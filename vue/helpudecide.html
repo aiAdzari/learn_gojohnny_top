@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>help u decide hahaha</title>
 
     <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
@@ -94,6 +94,12 @@
             box-shadow: 4px 4px 12px #c5c5c5,
                 -4px -4px 12px #ffffff;
         }
+        #inqus_input{
+            width: 280px; 
+            height: 25px; 
+            margin: 10px auto;
+            text-align: center;
+        }
 
         @media screen and (max-width: 800px) {
             .content {
@@ -103,6 +109,9 @@
             .pic {
             max-width: 50%;
             margin: 10px auto;
+            }
+            #inqus_input{
+                width: 230px;
             }
         }
         @media screen and (max-width: 400px) {
@@ -121,8 +130,11 @@
             .title{
                 top: -75px;
             }
-        
+            #inqus_input{
+                width: 230px;
+            }
         }
+
     </style>
 </head>
 
@@ -130,11 +142,11 @@
     <div class="contanier">
         <div class="content">
             <div class="title">
-                <p>YES / NO <br> 问题大解决！</p>
+                <p>属于是 <br> 难题大解决器！</p>
             </div>
             <div class="inqus" id="qus">
                 <div class="inqus_title">
-                    <p>{{inqus}}答案是：</p>
+                    <p>{{inqus}}</p>
                 </div>
                 <div v-bind:class="{'ans':use}">
                     <p>{{ans}}</p>
@@ -144,8 +156,7 @@
                 </div>
                 <div>
                     <h2>请输入问题：</h2>
-                    <input v-model="inqus" style="width: 280px; height: 25px; margin: 10px auto;"
-                        placeholder="E.g. 他妈妈喜欢我吗？">
+                    <input v-model="inqus" placeholder="E.g. 他妈妈喜欢我吗？" id="inqus_input">
                     <button @click="send" class="btn">决定！</button>
                 </div>
             </div>
@@ -163,7 +174,8 @@
             },
             methods: {
                 send: function () {
-                    this.ans = "思考中……"
+                    this.use = false;
+                    this.ans = "思考中……";
                     var vm = this
                     $.get("https://yesno.wtf/api", function (data) {
                         vm.ans = data.answer;
