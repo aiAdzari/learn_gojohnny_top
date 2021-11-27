@@ -41,7 +41,7 @@ session_start(); //链接session
 						<?php
 			if(check_login() > 0)
 			{
-				echo "欢迎�?" . $_SESSION['username'];
+				echo "欢迎" . $_SESSION['username'];
 			}?>
 					</a>
 					<a style="color: white;float:right" href="login.php">
@@ -56,19 +56,19 @@ session_start(); //链接session
 			</td>
 		</tr>
 		<tr>
-			<td width="10%"><strong>主�??</strong></td>
+			<td width="10%"><strong>主页</strong></td>
 			<td width="40"><strong>论坛</strong></td>
-			<td width="15"><strong>最后更�?</strong></td>
+			<td width="15"><strong>最后更新</strong></td>
 		</tr>
 		<?php
-	require('conn.php'); //连接数据�?
+	require('conn.php'); //连接数据库
 	
 	$sql = 'select * from forums';
-	$que = mysqli_query($conn, $sql); //获取所有板块表内�??
+	$que = mysqli_query($conn, $sql); //获取所有板块表内容
 	
 	if (!$que) {
 	printf("Error: %s\n", mysqli_error($conn));
-	exit(); //这一段代码救了我的命，拯救了我一晚上，在此留下�?�号�?
+	exit(); //这一段代码救了我的命，拯救了我一晚上
 }
 	if (mysqli_num_rows($que) == 0)
 	{

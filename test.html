@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>test new function</title>
-<style>
-
-    .works{
-        background-color: aqua;
-        width: 200px;
-        height: 200px;
-
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    </style>
+    <meta charset="utf-8">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
 </head>
+<style>
+</style>
+
 <body>
-
-    <div class="works">
-
+    <div id="forum-post-content" v-for="post in posts">
+        <h1>{{post.id}}</h1>
     </div>
-    
+    </div>
 
-
-<script>
-
-</script>
+    <script>
+        new Vue({
+            el: "#forum-post-content",
+            data: {
+                posts: [
+                    {
+                        "id": "3",
+                        "forum_name": "h",
+                        "forum_description": "g",
+                        "subject": "g",
+                        "last_post_time": "2021-11-25 07:51:09"
+                    }
+                ]
+            },
+        });
+    </script>
 </body>
+
 </html>
+<!--
+    created: function () {
+var vm = this;
+// Fetch our array of posts from an API
+fetch("php/index.php")
+.then(function (response) {
+return response.json();
+})
+.then(function (data) {
+vm.posts = data;
+});
+       Vue.compoent("forum-post", {
+            props: ['post'],
+            template: "<h3>{{ post.subject }}</h3>"
+
+        });
+}-->
