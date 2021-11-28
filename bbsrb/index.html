@@ -33,7 +33,8 @@
         .title {
             height: 70px;
             width: 100%;
-            background-color: cadetblue;
+            background-color: black;
+            color: white;
         }
 
         .title h2 {
@@ -100,7 +101,7 @@
 
         .rightbar {
             width: 270px;
-            background-color: slateblue;
+            background-color: rgb(226, 226, 226);
         }
 
         .sep {
@@ -112,30 +113,28 @@
             height: 70px;
             background-color: rgb(226, 226, 226);
         }
-
         .indro {
             width: 100%;
-            height: 40px;
+            height: 30px;
             background-color: rgb(226, 226, 226);
             text-align: left;
 
         }
 
         .indro p {
-            font-size: 30px;
-            line-height: 30px;
+            font-size: 20px;
+            line-height: 20px;
         }
-
         .hello {
             width: 100%;
-            height: 40px;
+            height: 30px;
             background-color: rgb(226, 226, 226);
             text-align: left;
         }
 
         .hello p {
-            font-size: 30px;
-            line-height: 30px;
+            font-size: 20px;
+            line-height: 20px;
         }
 
         .test {
@@ -149,6 +148,7 @@
             min-height: 100px;
             background-color: white;
             border-style: solid;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
             border-color: rgb(226, 226, 226);
             border-width: 1px;
         }
@@ -180,13 +180,86 @@
             color: black;
 
         }
+        .forum_name a:hover{
+            color: rgb(160, 158, 158);
+        }
 
         .forum_des {
             width: 100%;
             padding-bottom: 10px;
         }
-        #empty_repo{
+
+        #empty_repo {
             font-size: 50px
+        }
+
+        .logininfo {
+            width: 100%;
+            height: 160px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+            background-color: white;
+        }
+
+        .decon {
+            width: 100%;
+            height: 100%;
+        }
+
+        .login_up {
+            width: 100%;
+            height: 40%;
+            text-align: left;
+            background-color: white;
+            border-bottom: 1px solid rgba(80,80,90,.35);
+        }
+
+        .login_up h3 {
+            font-size: 16px;
+            padding: 18px 0 5px 30px;
+            font-weight: bold;
+
+        }
+
+        .login_up p {
+            font-size: 16px;
+            padding: 0 0 10px 30px;
+            ;
+            color: #ccc;
+        }
+
+        .login_down {
+            width: calc(100% - 60px);
+            height: calc(70% - 60px);
+            padding: 30px;
+            background-color: white;
+        }
+        .login_down p{
+            margin: 20px;
+            font-size: 14px;
+        }
+        .login_down p a{
+            color: #4d5256;
+        }
+        .login_down p a:hover{
+            color: rgb(160, 158, 158);
+        }
+
+        .normalbtn {
+            padding: 3px 12px;
+            line-height: 100%;
+            background-image: linear-gradient(white, rgb(226, 226, 226));
+            color: #333;
+            font-weight: bold;
+            text-shadow: 0 1px 0 #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid rgba(80,80,90,.2);
+            border-bottom-color: rgba(80,80,90,.35);
+            box-shadow: 0 1px 0 rgba(66, 66, 77, .1);
+        }
+        .normalbtn:hover{
+            color: rgb(160, 158, 158);
         }
     </style>
 </head>
@@ -207,15 +280,16 @@
         <div class="content">
             <div class="main">
                 <div id="sep1" class="sep"></div>
-                <div class="indro">
+                    <div class="indro">
                     <p>板块：</p>
                 </div>
                 <div id="forum-post-content">
-                    <div v-if="posts.length != 0"> <!--判断是否有板块-->
+                    <div v-if="posts.length != 0">
+                        <!--判断是否有板块-->
                         <forum-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></forum-post>
                     </div>
                     <div v-else>
-                        <p id="empty_repo">板块为空！</p>
+                        <p id="empty_repo">板块为空或获取失败！</p>
                     </div>
                 </div>
 
@@ -224,8 +298,20 @@
             </div>
             <div class="rightbar">
                 <div id="sep2" class="sep"></div>
-                <div class="hello">
+                    <div class="hello">
                     <p>消息：</p>
+                </div>
+                <div class="logininfo">
+                    <div class="decon">
+                        <div class="login_up">
+                            <h3>这里是咸鱼小镇</h3>
+                            <p>一个技术摸鱼BBS</p>
+                        </div>
+                        <div class="login_down">
+                            <a href="./reg" class="normalbtn" target="_blank">现在注册</a>
+                            <p>已经注册了吗？请<a href="./login/">登陆</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -246,7 +332,7 @@
                             <p>{{post.forum_description}}</p>
                         </div>
                     </div>`
-            
+
         });
         new Vue({
             el: "#forum-post-content",
@@ -254,15 +340,15 @@
                 posts: []
             },
             created: function () {
-                var vm = this;
+                let vm = this;
 
-                fetch("php/index.php")
+                axios.post("./php/index.php")
                     .then(function (response) {
-                        console.log(response)
-                        return response.json();
+                        vm.posts = response.data;
+                        console.log(vm.posts);
                     })
-                    .then(function (data) {
-                        vm.posts = data;
+                    .catch(function (error) {
+                        console.error();
                     });
             }
         });
