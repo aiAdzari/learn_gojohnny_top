@@ -19,14 +19,16 @@
             background-color: rgb(226, 226, 226);
         }
 
-        a{
+        a {
             transition: color 0.2s;
             color: black;
-            
+
         }
-        a:hover{
+
+        a:hover {
             color: rgb(160, 158, 158);
         }
+
         .wrapper {
             display: -webkit-flex;
             display: flex;
@@ -206,14 +208,16 @@
             box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
             background-color: white;
         }
-        .newforum{
+
+        .newforum {
             width: 100%;
             height: 55px;
             margin-bottom: 10px;
             box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
             background-color: white;
         }
-        .newforum a{
+
+        .newforum a {
             display: block;
             padding: 15px 0;
             font-size: large;
@@ -280,7 +284,8 @@
         .normalbtn:hover {
             color: rgb(160, 158, 158);
         }
-        .username{
+
+        .username {
             color: black;
             font-size: 20px;
             font-weight: bold;
@@ -298,7 +303,8 @@
             <ul>
                 <li><a href="">项目首页</a></li>
                 <li><a href="">BBS</a></li>
-                 <li style="float: right;" v-if="users.msg == 'false'"><a href="./login">登录</a>/<a href="./reg/">注册</a></li>
+                <li style="float: right;" v-if="users.msg == 'false'"><a href="./login">登录</a>/<a href="./reg/">注册</a>
+                </li>
                 <li style="float: right;" v-else><a href="./php/un_login.php">退出登录</a></li>
             </ul>
         </div>
@@ -374,7 +380,7 @@
             el: "#post-content",
             data: {
                 posts: [],
-                users: ''
+                users: []
             },
             created: function () {
                 let vm = this;
@@ -388,11 +394,11 @@
                         console.error();
                     });
                 axios.post("./php/checklogin.php")
-                    .then(function(response){
+                    .then(function (response) {
                         vm.users = response.data;
                         console.log(vm.users);
                     })
-                    .catch(function(error){
+                    .catch(function (error) {
                         console.error();
                     })
             }
