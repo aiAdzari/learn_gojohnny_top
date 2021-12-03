@@ -232,6 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") //检测是否POST表单
 		{
 			$tiopic_reply = $_POST['tiopic_reply'];
 			$author = $_SESSION['username'];
+			date_default_timezone_set("PRC");
 			$log_time=date("Y-m-d H:i:s");
 			$sql_newreply="INSERT into tiopic_reply(main_id,author,content,last_post_time)VALUES
     ('$id','$author','$tiopic_reply','$log_time')";

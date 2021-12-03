@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") //检测是否POST表单
 	$author=$_SESSION['username'];
 	$title=$_POST['title'];
 	$content=$_POST['content'];
+    date_default_timezone_set("PRC");
 	$last_post_time=date("Y-m-d H:i:s");//提取表单数据
 	
 	$F=$_SESSION['F'];//重要！获取当前论坛id
